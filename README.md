@@ -1,7 +1,7 @@
 ## Windows 11 might be the best choice for the client PC of ML programmers
 ![Demo Screenshot](docs/screenshot-winpymax.png?raw=true "screenshot-winpymax.png")
 
-[![Demo Gif](https://www.kapwing.com/videos/6268373f52002800e16d8437)](https://share.gifyoutube.com/KzB6Gb.gif)
+[![Demo Gif](https://yt-embed.herokuapp.com/embed?v=ZORPYFj45ZQ)](https://www.youtube.com/watch?v=ZORPYFj45ZQ)
 
 
 
