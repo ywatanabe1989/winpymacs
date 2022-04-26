@@ -39,7 +39,6 @@ $ nvidia-smi # failed
 $ exit
 \> Restart-Computer -Force # reboot the windows PC
 $ nvidia-smi # succeeded this time
-ywatanabe@ywata-desktop-win:~$ nvidia-smi
 Tue Apr 26 13:54:09 2022
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 510.60.02    Driver Version: 512.15       CUDA Version: 11.6     |
