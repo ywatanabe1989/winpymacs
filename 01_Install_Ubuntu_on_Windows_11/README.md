@@ -1,4 +1,4 @@
-## install wsl2 on windows 11
+## Install wsl2 on windows 11
   - \\> wsl --install
   - \\> Restart-Computer -Force
   
