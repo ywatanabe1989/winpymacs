@@ -1,5 +1,5 @@
 ## Windows 11 might be the best choice for the client PC for ML programmers
-
+![Alt text](docs/screenshot-winpymax.png?raw=true "screenshot-winpymax.png")
 
 - WSL2 (Windows + Ubuntu GUI)
 
