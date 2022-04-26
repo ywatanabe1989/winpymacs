@@ -1,0 +1,140 @@
+Bootstrap: docker
+From: rockylinux/rockylinux:8.5
+
+
+%setup
+
+
+%post -c /bin/bash
+    ################################################################################
+    ## PATH
+    ################################################################################
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/lib:/usr/local/lib64
+    echo export LD_LIBRARY_PATH=$LD_LIBRARY_PATH >> $SINGULARITY_ENVIRONMENT
+
+    ################################################################################
+    ## Rocky Linux 8
+    ################################################################################    
+    yum -y install setup
+    yum -y groupinstall "Development Tools"
+    yum -y upgrade
+
+    ##############################
+    ## yum repos
+    ##############################
+    yum -y install dnf-plugins-core
+
+    # POWER TOOLS
+    yum config-manager --set-enabled powertools
+
+    # EPEL
+    yum -y install epel-release    
+
+    # ripgrep
+    RIP_GREP_REPO_URL="https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/"
+    RIP_GREP_REPO_URL=${RIP_GREP_REPO_URL}epel-7/carlwgeorge-ripgrep-epel-7.repo
+    yum config-manager --add-repo=$RIP_GREP_REPO_URL
+
+    ## upgrade
+    yum -y upgrade
+
+
+    ##############################
+    ## Locale: en_US.UTF-8
+    ##############################
+    yum -y install langpacks-en glibc-all-langpacks
+    export LC_ALL=en_US.UTF-8
+    echo export LC_ALL=$LC_ALL >> $SINGULARITY_ENVIRONMENT
+
+
+    ##############################
+    ## Misc
+    ##############################
+    yum -y install mesa-libGL mesa-libGL-devel
+    yum -y install glibc glibc-devel    
+    yum -y install tree
+    yum -y install htop
+    yum -y install ripgrep
+
+    ################################################################################
+    ## Python
+    ################################################################################
+    yum -y install python39 python39-devel
+    ln -s /usr/bin/python3 /usr/bin/python # alias
+    yum -y install python39-tkinter
+    
+    ## pip
+    python3 -m pip install --upgrade pip setuptools wheel
+
+    ## Machine learning
+    python3 -m pip install scikit-learn
+    python3 -m pip install torch-scatter torch-sparse torch-cluster torch-spline-conv \
+                           torch-geometric -f https://data.pyg.org/whl/torch-1.10.0+cu102.html    
+    python3 -m pip install torch_summary
+    python3 -m pip install torch torchvision torchaudio
+
+    ## Basics
+    python3 -m pip install chardet
+    python3 -m pip install h5py
+    python3 -m pip install ipython
+    python3 -m pip install jupyter
+    python3 -m pip install jupyterlab    
+    python3 -m pip install matplotlib
+    python3 -m pip install natsort
+    python3 -m pip install numba
+    python3 -m pip install numpy
+    python3 -m pip install pandas
+    python3 -m pip install psutil    
+    python3 -m pip install PyYAML
+    python3 -m pip install tqdm
+    
+    ## Image
+    python3 -m pip install seaborn
+
+    ## Linters
+    python3 -m pip install black
+    python3 -m pip install flake8
+
+    ## Debugger
+    python3 -m pip install ipdb
+
+
+    ################################################################################
+    ## PS1
+    ################################################################################
+    CUSTOM_PS1_FILE=/.singularity.d/env/99-zz-02_custom_ps1.sh
+    cat << "    EOH" | awk '{$1=$1;print}' > $CUSTOM_PS1_FILE
+    #!/bin/bash"
+
+    PS1="(S)\W \$ "
+
+    ## EOF
+    EOH
+
+    chmod 755 $CUSTOM_PS1_FILE
+
+
+%files
+
+
+%test
+
+
+%help
+    A simplest container as an example
+
+
+%labels
+    Author ywata1989@gmail.com
+    Version 0.0.1
+
+
+%environment
+    ## Meta data
+    export CONTAINER_BUILD_DATE=\"`date`\"
+
+
+%startscript
+
+
+%runscript
