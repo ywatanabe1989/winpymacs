@@ -1,11 +1,12 @@
-#### Windows 11 might be the best choice for the client PC for ML programmers
+## Windows 11 might be the best choice for the client PC for ML programmers
 
 
-- WSL2 (Windows + Ubuntu GUI; wslg)
+- WSL2 (Windows + Ubuntu GUI)
 
   - Needs just one device
 
     - cost effective
+    - manageable
 
   - Alt + Tab switching
 
@@ -15,30 +16,28 @@
 
 - Windows
 
-  - Documentation
-    - Office
-    - Other software
+  - Documenting
+    - MS Office
+    - Other software on Windows
 
   
 
 - Ubuntu
 
   - Linux commands (CUI; bash)
-
-    - CUI
       - programmable
       - faster
       - reproducability
 
     
 
-- Ubuntu's Emacs (instead of Window's Emacs)
+- Ubuntu's Emacs (instead of Windows' version)
 
   - Text Editing (on text buffer)
   - Runs code (on bash buffer)
   - ssh without noticing (= TRAMP)
   - git integration (= Magit)
   - auto checker (= flycheck)
-  - ... anything you want with add-ons
+  - more...
 
 
