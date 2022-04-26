@@ -1,25 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2022-04-26 22:27:36 (ywatanabe)"
-
-import numpy as np
-import torch
-
-torch.cuda.current_device()
-# RuntimeError: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx
-
-
-
-
-
+# Time-stamp: "2022-04-27 03:02:49 (ywatanabe)"
 
 import torch
 import math
 
 
 dtype = torch.float
-device = torch.device("cpu")
-# device = torch.device("cuda:0") # Uncomment this to run on GPU
+# device = torch.device("cpu")
+device = torch.device("cuda:0") # Uncomment this to run on GPU
 
 # Create random input and output data
 x = torch.linspace(-math.pi, math.pi, 2000, device=device, dtype=dtype)
@@ -53,6 +42,7 @@ for t in range(2000):
     b -= learning_rate * grad_b
     c -= learning_rate * grad_c
     d -= learning_rate * grad_d
+
 
 
 print(f'Result: y = {a.item()} + {b.item()} x + {c.item()} x^2 + {d.item()} x^3')
